@@ -4,11 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-     <button onChange={setCount(count + 1)}>{count}</button>
+     <button >HELLOOO</button>
     </>
   )
 }
