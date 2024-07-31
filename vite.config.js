@@ -5,6 +5,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: "/contact-app",
   plugins: [react()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://live.devnimble.com',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  }
   // server: {
   //   proxy: {
   //     '/api': {
