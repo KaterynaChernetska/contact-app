@@ -1,10 +1,9 @@
-import './ContactForm.css';
-
+import "./ContactForm.css";
 
 const ContactForm = () => {
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-    }
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+  };
   return (
     <>
       <h2>Create Contact</h2>

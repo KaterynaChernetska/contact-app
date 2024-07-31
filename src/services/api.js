@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "/api/";
+const apiUrl =  "https://live.devnimble.com/api/v1";
 const token = import.meta.env.VITE_API_TOKEN;
 
 export const UserAPI = {
