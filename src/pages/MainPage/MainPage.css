@@ -1,0 +1,43 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 34px;
+  flex-direction: column;
+  gap: 60px;
+  overflow: hidden;
+}
+
+.contact-form-container {
+  position: sticky;
+  top: 22px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 50vh;
+  background-color: white;
+}
+h2 {
+  margin-bottom: 20px;
+}
+.contact-list-container {
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 100px;
+    padding: 36px 100px 0px 100px;
+  }
+  .contact-form-container {
+    position: static;
+    width: 50%;
+    height: 100vh;
+    background-color: white;
+  }
+  .contact-list-container {
+    width: 50%;
+    top: 36px;
+  }
+}
