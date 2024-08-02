@@ -73,9 +73,12 @@
     flex-wrap: wrap;
     gap: 10px;
   }
-  
+  .contact-list-item{
+    max-width: 588px;
+  }
   .contact-list {
     max-height: 100vh;
     overflow-y: scroll;
+
   }
 }
