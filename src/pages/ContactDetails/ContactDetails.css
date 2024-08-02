@@ -71,7 +71,11 @@
   align-items: center;
   margin-top: 1rem;
 }
-
+.info{
+ margin-top: 10px;
+ color:#007bff;
+ font-size: 12px;
+}
 .add-tag input {
   flex: 1;
   padding: 0.5rem;

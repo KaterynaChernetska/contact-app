@@ -81,6 +81,7 @@ const ContactDetail = () => {
               />
               <button onClick={handleAddTags}>Add Tag</button>
             </div>
+            <p className="info">* To add more than one tag at once separate them with a comma</p>
           </div>
         </div>
       )}
