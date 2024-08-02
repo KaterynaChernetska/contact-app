@@ -5,11 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
@@ -31,5 +30,5 @@
     "gh-pages": "^6.1.1",
     "vite": "^5.2.0"
   },
-   "proxy": "https://live.devnimble.com"
+  "proxy": "https://live.devnimble.com"
 }

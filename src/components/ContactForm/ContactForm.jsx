@@ -24,10 +24,16 @@ const ContactForm = () => {
     }
 
     setError("");
+    const placeholderLastName = lastName || "N/A";
+    const placeholderFirstName = firstName || "N/A";
     const newContactData = {
       fields: {
-        "first name": [{ value: firstName, modifier: "", label: "first name" }],
-        "last name": [{ value: lastName, modifier: "", label: "last name" }],
+        "first name": [
+          { value: placeholderFirstName, modifier: "", label: "first name" },
+        ],
+        "last name": [
+          { value: placeholderLastName, modifier: "", label: "last name" },
+        ],
         email: [{ value: email, modifier: "", label: "email" }],
       },
       record_type: "person",
@@ -36,7 +42,7 @@ const ContactForm = () => {
     };
 
     await dispatch(createContact(newContactData));
-    dispatch(getContacts()); // оновлення списку контактів
+    dispatch(getContacts());
 
     setFirstName("");
     setLastName("");
@@ -46,48 +52,48 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h2 className="form-title">Create New Contact</h2>
-     <div className="form">
-     {error && <p className="form-error">{error}</p>}
-      <div className="form-group">
-        <label htmlFor="firstName" className="form-label">
-          First Name
-        </label>
-        <input
-          type="text"
-          id="firstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          className="form-input"
-        />
+      <div className="form">
+        {error && <p className="form-error">{error}</p>}
+        <div className="form-group">
+          <label htmlFor="firstName" className="form-label">
+            First Name
+          </label>
+          <input
+            type="text"
+            id="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="lastName" className="form-label">
+            Last Name
+          </label>
+          <input
+            type="text"
+            id="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="form-input"
+          />
+        </div>
+        <button type="submit" className="form-button">
+          Create Contact
+        </button>
       </div>
-      <div className="form-group">
-        <label htmlFor="lastName" className="form-label">
-          Last Name
-        </label>
-        <input
-          type="text"
-          id="lastName"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          className="form-input"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="email" className="form-label">
-          Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="form-input"
-        />
-      </div>
-      <button type="submit" className="form-button">
-        Create Contact
-      </button>
-     </div>
     </form>
   );
 };

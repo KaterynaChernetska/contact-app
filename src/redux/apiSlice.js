@@ -32,6 +32,7 @@ export const createContact = createAsyncThunk(
       const response = await axiosInstance.post("contact", newContact);
       return response.data;
     } catch (e) {
+      console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -88,7 +89,7 @@ const apiSlice = createSlice({
       })
       .addCase(getContacts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
       .addCase(deleteContact.pending, (state) => {
         state.loading = true;
@@ -101,7 +102,7 @@ const apiSlice = createSlice({
       })
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
       .addCase(createContact.pending, (state) => {
         state.loading = true;
@@ -112,7 +113,7 @@ const apiSlice = createSlice({
       })
       .addCase(createContact.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
       .addCase(getOneContact.pending, (state) => {
         state.loading = true;
@@ -131,7 +132,7 @@ const apiSlice = createSlice({
       })
       .addCase(getOneContact.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
       .addCase(updateContactTags.pending, (state) => {
         state.loading = true;
@@ -139,11 +140,11 @@ const apiSlice = createSlice({
       .addCase(updateContactTags.fulfilled, (state, action) => {
         state.loading = false;
         const updatedTags = action.payload.tags;
-        state.contact.tags = [ ...updatedTags];
+        state.contact.tags = [...updatedTags];
       })
       .addCase(updateContactTags.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       });
   },
 });

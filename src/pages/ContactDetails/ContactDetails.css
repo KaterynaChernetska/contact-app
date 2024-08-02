@@ -8,6 +8,7 @@
 .go-back {
   font-weight: 600;
   display: flex;
+  align-items: center;
   color: #aac1f0;
   border: none;
   padding: 0.5rem 1rem;
@@ -15,22 +16,21 @@
   cursor: pointer;
   margin-bottom: 1rem;
   transition: transform 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+}
+.go-back:hover {
+  color: #0056b3;
 }
 
-.go-back:hover {
+.arrow-icon {
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-    transform: scale(1.05); 
-  }
-  
-  .arrow-icon {
-    margin-right: 0.5rem;
-    transition: fill 0.3s ease;
-
-  }
-  
-  .go-back:hover .arrow-icon {
-
-  }
+.go-back:hover .arrow-icon {
+  transform: translateX(-10px);
+  opacity: 0;
+}
 .contact-header {
   display: flex;
   align-items: center;
