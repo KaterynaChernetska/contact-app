@@ -7,12 +7,11 @@ export default defineConfig({
   plugins: [react()],
 
   server: {
-    cors: false,
     proxy: {
-      '/api': {
-        target: 'https://live.devnimble.com/',
+      "/api": {
+        target: "https://live.devnimble.com",
         changeOrigin: true,
-        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, "/api/v1"),
       },
     },
   },
