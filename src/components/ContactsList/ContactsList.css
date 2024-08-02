@@ -8,7 +8,6 @@
 
 .contact-list-item {
   display: flex;
-  max-width: 360px;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
@@ -74,7 +73,6 @@
     gap: 10px;
   }
   .contact-list-item{
-    max-width: 588px;
   }
   .contact-list {
     max-height: 100vh;
