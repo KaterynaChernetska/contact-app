@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  max-height: 540px;
+  max-height: 40vh;
   overflow-y: scroll;
 }
 
@@ -11,13 +11,21 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  background-color: #ededed;
-  width: 328px;
+  background-color: #f9f9f9;
   padding: 14px 10px;
   border-radius: 3px;
   position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
+.contact-list-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contacts-header {
+  margin-top: 20px;
+}
 .avatar-image {
   width: 60px;
   height: 60px;
@@ -33,6 +41,10 @@
   position: absolute;
   top: 4px;
   right: 4px;
+  transition: transform 0.3s ease-in-out;
+}
+.delete-contact-btn:hover {
+  transform: scale(1.2);
 }
 .tags-list {
   display: grid;
@@ -40,10 +52,10 @@
   gap: 10px;
 }
 .tags-list li {
-  align-items: center;
-  background-color: #a6a6a6;
+  background-color: #aac1f0;
   padding: 2px 6px;
   border-radius: 4px;
+  text-align: center;
 }
 .contact-email {
   margin-bottom: 10px;
@@ -55,7 +67,6 @@
     gap: 10px;
   }
   .contact-list-item {
-    width: 558px;
   }
   .contact-list {
     max-height: 100vh;

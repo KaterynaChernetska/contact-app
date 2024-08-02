@@ -1,65 +1,37 @@
 import Loader from "../Loader/Loader";
-import { useEffect, useState } from "react";
-import { UserAPI } from "../../services/api";
+import { useEffect } from "react";
+
 import ContactListItem from "../ContactListItem/ContactListItem";
 import "./ContactsList.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getContacts } from "../../redux/apiSlice";
 
 const ContactList = () => {
-  const [contacts, setContacts] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const dispatch = useDispatch();
+  //   const contacts = useSelector((state) => state.contacts.contacts);
+  //   const error = useSelector((state) => state.contacts.error);
+  const { contacts, loading, error } = useSelector((state) => state.contacts);
   useEffect(() => {
-    const fetchContacts = async () => {
-      setIsLoading(true);
-      try {
-        const data = await UserAPI.getContacts();
-        setContacts(data.resources);
-        setIsLoading(false);
-      } catch (error) {
-        setError(error);
-        setIsLoading(false);
-      }
-    };
-    fetchContacts();
-  }, []);
-
-  const handleDelete = async (id) => {
-    try {
-      await UserAPI.deleteContact(id);
-      setContacts(contacts.filter((contact) => contact.id !== id));
-    } catch (error) {
-      setError(error);
-    }
-  };
+    dispatch(getContacts());
+  }, [dispatch]);
 
   return (
     <>
-     <h2>Contacts</h2>
-      <ul className='contact-list'>
-        {isLoading && <Loader />}
-        {error && <p>Oops, some error occurred... Message: {error.message}</p>}
-        {contacts.map((contact) => (
-          <li className="contact-list-item" key={contact.id}>
-            <ContactListItem contact={contact} handleDelete={handleDelete} />
-          </li>
-        ))}
-      </ul>
+      <h2 className="contacts-header">Contacts</h2>
+      {loading ? (
+        <Loader />
+      ) : (
+        <ul className="contact-list">
+          {error && <p>Oops, some error occurred... Message: {error}</p>}
+          {contacts?.map((contact) => (
+            <li className="contact-list-item" key={contact.id}>
+              <ContactListItem contact={contact} />
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
-
-// ContactList.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       firstName: PropTypes.string.isRequired,
-//       lastName: PropTypes.string.isRequired,
-//       email: PropTypes.string.isRequired,
-//       avatar: PropTypes.string.isRequired,
-//       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-//     })
-//   ).isRequired,
-// };
 
 export default ContactList;

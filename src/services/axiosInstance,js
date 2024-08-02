@@ -1,0 +1,16 @@
+import axios from "axios";
+
+const apiUrl =
+  "https://cors-anywhere.herokuapp.com/https://live.devnimble.com/api/v1/";
+// const apiUrl = "/api/";
+const token = import.meta.env.VITE_API_TOKEN;
+
+const axiosInstance = axios.create({
+  baseURL: apiUrl,
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  },
+});
+
+export default axiosInstance;

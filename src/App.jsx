@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import "./App.css";
 import Loader from "./components/Loader/Loader";
@@ -9,14 +9,14 @@ const ContactDetail = lazy(() => import("./pages/ContactDetails/ContactDetails")
 
 function App() {
   return (
-    <>
+    <Router>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/contact/:id" element={<ContactDetail />} />
         </Routes>
       </Suspense>
-    </>
+    </Router>
   );
 }
 
