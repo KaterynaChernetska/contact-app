@@ -3,11 +3,12 @@
   flex-direction: column;
   gap: 14px;
   max-height: 40vh;
-  /* overflow-y: scroll; */
+
 }
 
 .contact-list-item {
   display: flex;
+  max-width: 360px;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
@@ -52,12 +53,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  
 }
 .tags-list li {
   background-color: #aac1f0;
   padding: 2px 6px;
   border-radius: 4px;
+  text-overflow: ellipsis;
+  max-width: 70px;
   text-align: center;
+  word-wrap: break-word; 
 }
 .contact-email {
   margin-bottom: 10px;
